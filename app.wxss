@@ -8,3 +8,9 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } **/
+
+/* 全局文字IOS下使用苹方字体 */
+page {
+  font-family: "PingFangSC-Thin";
+  font-size: 32rpx;
+}
