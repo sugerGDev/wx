@@ -1,5 +1,6 @@
 <!--components/like/index.wxml-->
 <view class='container' bind:tap='onLike'>
-<image class='like' src='images/like.png'/>
-<text>99k</text>
+<image class='like' src='{{flag ? likeImgSrc : likeDisImgSrc }}'/>
+<text>{{num}}</text>
 </view>
+
