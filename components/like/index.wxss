@@ -1,6 +1,8 @@
 /* components/like/index.wxss */
 .container {
-  display: flex;
+  display: inline-flex;
+  flex-direction: row;
+  padding: 10rpx;
 }
 
 .container image {
@@ -9,6 +11,12 @@
 }
 
 .container text {
-  /* font-size: 48rpx; */
+   font-size: 24rpx; 
   color: #bbbbbb;
+  position: relative;
+  bottom: 10rpx;
+  left: 6prx;
+  line-height: 24rpx;/*去掉文字上下间距，设置为当前文字大小*/
+  width: 80prx;
+
 }
