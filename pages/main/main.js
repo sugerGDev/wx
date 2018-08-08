@@ -1,5 +1,5 @@
 // pages/main/main.js
-import { Http } from '../../http.js'
+import { Http } from '../../utils/http.js'
 let http = new Http()
 
 Page({
@@ -27,7 +27,7 @@ Page({
       method  : 'GET',
       success : (res) => {
 
-      } 
+      }
     })
   },
 
