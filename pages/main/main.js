@@ -1,6 +1,6 @@
 // pages/main/main.js
-import { Http } from '../../utils/http.js'
-let http = new Http()
+import { MainModel } from '../../models/main.js'
+let mainModel = new MainModel()
 
 Page({
 
@@ -8,27 +8,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    mainData : null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    // 请求 getlatest API
+    mainModel.getLatest((res)=>{
+      this.setData({
+        mainData : res.data
+      })
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    http.request({
-      uri     : 'classic/latest',
-      method  : 'GET',
-      success : (res) => {
-
-      }
-    })
+ 
   },
 
   /**
