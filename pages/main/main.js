@@ -1,4 +1,7 @@
 // pages/main/main.js
+import { Http } from '../../http.js'
+let http = new Http()
+
 Page({
 
   /**
@@ -19,7 +22,13 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    http.request({
+      uri     : 'classic/latest',
+      method  : 'GET',
+      success : (res) => {
+
+      } 
+    })
   },
 
   /**
