@@ -1,8 +1,20 @@
 <!--pages/main/main.wxml<text>pages/main/main.wxml</text>-->
 
 
-<epsoide-comp/>
+<view class='containter'>
+  <view class='header'>
+    <epsoide-comp class='epsoide' index='{{mainData.index}}' />
 
-<!-- 自定义点击事件 -->
-<like-comp  bind:like='onLike' flag='{{mainData.like_status}}' num='{{mainData.fav_nums}}' />
-<movie-comp img='{{mainData.image}}' content='{{mainData.content}}' />
+    <!-- 自定义点击事件 -->
+    <like-comp class='like' bind:like='onLike' flag='{{mainData.like_status}}' num='{{mainData.fav_nums}}' />
+  </view>
+
+  <movie-comp img='{{mainData.image}}' content='{{mainData.content}}' />
+
+  <navi-comp class='navi' title='{{mainData.title}}' 
+  first="{{first}}" latest="{{latest}}"
+  
+  />
+
+
+</view>

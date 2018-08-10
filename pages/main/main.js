@@ -12,7 +12,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    mainData : null
+    mainData : null,
+    first: true,
+    latest : false,
   },
 
   /**
