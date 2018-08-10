@@ -1,5 +1,7 @@
 {
   "usingComponents" : {
-    "like-comp" : "/components/like/index"
+    "like-comp"  : "/components/like/index",
+    "epsoide-comp": "/components/epsoide/index",
+    "movie-comp" : "/components/main/movie/index"
   }
 }

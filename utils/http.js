@@ -84,7 +84,7 @@ class Http {
         let code = res.statusCode.toString()
         if (code.startsWith('2')) {
           //成功情况
-          param.success(res)
+          param.success && param.success(res.data);
         } else {
 
           let error_code = res.data.error_code

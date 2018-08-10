@@ -49,6 +49,7 @@ Component({
 
 
     onLike: function (event) {
+
       let flag =  !this.properties.flag
       var num  =   this.properties.num
       num = flag ? ( num + 1) : ( num - 1)
@@ -57,7 +58,16 @@ Component({
         flag : flag,
         num : num
       }) 
+
+
+      //激活点击事件
+      let behavior = flag ? 'like' : 'cancel'
+      this.triggerEvent('like',{
+        'behavior':behavior
+      },{})
+
     },
     
+
   }
 })

@@ -1,6 +1,10 @@
 // pages/main/main.js
 import { MainModel } from '../../models/main.js'
+import { LikeModel } from '../../models/like.js'
+
 let mainModel = new MainModel()
+let likeModel = new LikeModel()
+
 
 Page({
 
@@ -18,9 +22,17 @@ Page({
     // 请求 getlatest API
     mainModel.getLatest((res)=>{
       this.setData({
-        mainData : res.data
+        mainData : res
       })
     })
+  },
+  
+  onLike: function (event) {
+    console.log(event)
+    let behavior = event.detail.behavior;
+    let artId = this.data.mainData.id;
+    let category = this.data.mainData.type;
+    likeModel.like(artId,behavior,category)
   },
 
   /**
@@ -70,5 +82,8 @@ Page({
    */
   onShareAppMessage: function () {
   
-  }
+  },
+
+
+
 })

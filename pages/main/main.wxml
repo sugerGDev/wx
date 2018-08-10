@@ -1,3 +1,8 @@
 <!--pages/main/main.wxml<text>pages/main/main.wxml</text>-->
 
-<like-comp flag='{{mainData.like_status}}' num='{{mainData.fav_nums}}' />
+
+<epsoide-comp/>
+
+<!-- 自定义点击事件 -->
+<like-comp  bind:like='onLike' flag='{{mainData.like_status}}' num='{{mainData.fav_nums}}' />
+<movie-comp img='{{mainData.image}}' content='{{mainData.content}}' />

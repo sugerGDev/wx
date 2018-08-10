@@ -3,6 +3,7 @@
  display: inline-flex; /*   宽高自适应 */
   flex-direction: row;
   padding: 10rpx;
+  width: 90rpx;
 }
 
 .container image {
