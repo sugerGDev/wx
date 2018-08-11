@@ -29,6 +29,7 @@ Page({
     })
   },
   
+  //点击事件响应
   onLike: function (event) {
     console.log(event)
     let behavior = event.detail.behavior;
@@ -36,6 +37,37 @@ Page({
     let category = this.data.mainData.type;
     likeModel.like(artId,behavior,category)
   },
+
+
+
+//Navi onNext 点击事件响应 回溯期刊逻辑
+  onNext:function(event) {
+
+    let idx = this.data.mainData.index;
+    mainModel.getClassic(idx, true, (res)=>{
+     this._updateClassicRes(res)
+    })
+  },
+
+  
+//Navi onPrev 点击事件响应 找寻前期刊逻辑
+onPrev: function(event) {
+
+  let idx = this.data.mainData.index;
+  mainModel.getClassic(idx, false, (res)=>{
+    this._updateClassicRes(res)
+  })
+},
+
+
+
+_updateClassicRes:function(res) {
+  this.setData({
+    mainData: res,
+    latest: mainModel.isLatest(res.index),
+    first: mainModel.isFirst(res.index)
+  })
+},
 
   /**
    * 生命周期函数--监听页面初次渲染完成

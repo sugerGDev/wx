@@ -11,10 +11,7 @@
 
   <movie-comp img='{{mainData.image}}' content='{{mainData.content}}' />
 
-  <navi-comp class='navi' title='{{mainData.title}}' 
-  first="{{first}}" latest="{{latest}}"
-  
-  />
+  <navi-comp class='navi' bind:left='onNext' bind:reight='onPrev' title='{{mainData.title}}' first="{{first}}" latest="{{latest}}" />
 
 
 </view>
