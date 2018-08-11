@@ -3,8 +3,13 @@ import {
 } from '../utils/http.js'
 
 class LikeModel extends Http {
+
+
     like(artId ,behavior, category) {
-      let uri = (behavior == 'like' ? 'like' : 'like/cancel');
+
+      
+      let isLike = behavior == 'like';
+      let uri = ( isLike ? 'like' : 'like/cancel');
       this.request({
         uri: uri,
         method : 'POST',
@@ -13,6 +18,14 @@ class LikeModel extends Http {
           'type' : category
         },
         
+      })
+    }
+
+
+    getLikeStatus(artId,category,sCallBak) {
+      this.request({
+        uri : `classic/${category}/${artId}/favor`,
+        success:sCallBak,
       })
     }
 }

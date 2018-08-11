@@ -1,16 +1,17 @@
 let mainBeh = Behavior({
 
   properties: {
-    img:String,
+    img: String,
     content: String,
+    hidden: Boolean
   },
 
   data: {
 
   },
 
-  attached:function() {
-    
+  attached: function () {
+
   },
 
 })

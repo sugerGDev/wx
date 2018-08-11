@@ -1,0 +1,24 @@
+.main-classic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .main-image {
+    width: 750rpx;
+    height: 500rpx;
+  }
+  
+  .main-tag {
+    width: 46rpx; 
+    height: 125rpx;
+    /* 位置定位 */
+    position: relative;
+    right: 310rpx;
+    bottom: 58rpx;
+  }
+  
+  .content {
+    font-size: 36rpx;
+    max-width: 550rpx;
+  }

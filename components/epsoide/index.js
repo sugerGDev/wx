@@ -9,7 +9,7 @@ Component({
         value : 0,
         observer: function (newVal, oldVal,changePath) {
           // console.log('index ' + newVal) ;
-          let idx = newVal < 10 ? ('0' + newVal) : newVal;
+          let idx = newVal < 10 ?  `0${newVal}` : newVal;
           this.setData({ '_index': idx })
         }
       }

@@ -3,15 +3,17 @@
 
 <view class='containter'>
   <view class='header'>
-    <epsoide-comp class='epsoide' index='{{mainData.index}}' />
+    <epsoide-comp class='epsoide' index='{{index}}' />
 
     <!-- 自定义点击事件 -->
-    <like-comp class='like' bind:like='onLike' flag='{{mainData.like_status}}' num='{{mainData.fav_nums}}' />
+    <like-comp class='like' bind:like='onLike' flag='{{like_status}}' num='{{fav_nums}}' />
   </view>
 
-  <movie-comp img='{{mainData.image}}' content='{{mainData.content}}' />
+  <movie-comp hidden='{{type != 100}}' img='{{image}}' content='{{content}}' />
+  <music-comp wx:if ='{{type == 200}}' img='{{image}}' content='{{content}}' src='{{url}}' />
+  <essay-comp hidden='{{type != 300}}' img='{{image}}' content='{{content}}' />
 
-  <navi-comp class='navi' bind:left='onNext' bind:reight='onPrev' title='{{mainData.title}}' first="{{first}}" latest="{{latest}}" />
+  <navi-comp class='navi' bind:left='onNext' bind:reight='onPrev' title='{{title}}' first="{{first}}" latest="{{latest}}" />
 
 
 </view>
