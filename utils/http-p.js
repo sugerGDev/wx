@@ -33,6 +33,7 @@ const tips = {
   1004: '禁止访问',
   1005: '不正确的开发者key',
   1006: '服务器内部错误',
+  1007: 'URL不正确',
   2000: '你已经点过赞了',
   2001: '你还没点过赞',
   3000: '该期内容不存在',
@@ -40,9 +41,55 @@ const tips = {
 }
 
 class Http {
+//ES6 对象解构
+ request({uri,data = {},method='GET'}) {
+   const httpThis = this;
+    return new Promise((resolve,reject)=>{
+      httpThis._request(uri, resolve, reject, method)
+    }) 
+ }
 
-  // 私用方法
-  _show_error(errCode) {
+ _request(uri, resolve, reject, data = {},method='GET') {
+
+    console.log('url >>>> ' + httpConfig.api_base_host + uri)
+    console.log('appkey >>>>> ' + httpConfig.appkey)
+    let httpThis = this;
+    
+    wx.request({
+
+      url: httpConfig.api_base_host + uri,
+      data: data,
+      header: {
+        'appKey': httpConfig.appkey,
+        'content-type': 'application/json'
+      },
+      method: method,
+      success: function(res) {
+
+        console.log(res)
+
+        // startsWith
+        // endWith
+        const code = res.statusCode.toString()
+        if (code.startsWith('2')) {
+          //成功情况
+           resolve(res.data)
+        } else {
+          reject()
+          const error_code = res.data.error_code
+          httpThis._show_error(error_code)
+        }
+
+      },
+      fail: function(res) {
+        reject()
+        httpThis._show_error(1)
+      },
+    })
+  }
+
+   // 私用方法
+   _show_error(errCode) {
 
     if (!errCode) {
       errCode = 1
@@ -52,48 +99,6 @@ class Http {
       title: tips[errCode],
       icon: 'none',
       duration: 2000,
-    })
-  }
-
-  request(param) {
-
-    if (!param.method) {
-      param.method = 'GET'
-    }
-
-    console.log('url >>>> ' + httpConfig.api_base_host + param.uri)
-    console.log('appkey >>>>> ' + httpConfig.appkey)
-    let httpThis = this;
-    
-    wx.request({
-
-      url: httpConfig.api_base_host + param.uri,
-      data: param.data,
-      header: {
-        'appKey': httpConfig.appkey,
-        'content-type': 'application/json'
-      },
-      method: param.method,
-      success: function(res) {
-
-        console.log(res)
-
-        // startsWith
-        // endWith
-        let code = res.statusCode.toString()
-        if (code.startsWith('2')) {
-          //成功情况
-          param.success && param.success(res.data);
-        } else {
-
-          let error_code = res.data.error_code
-          httpThis._show_error(error_code)
-        }
-
-      },
-      fail: function(res) {
-        httpThis._show_error(1)
-      },
     })
   }
 }
