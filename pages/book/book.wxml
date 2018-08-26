@@ -1,2 +1,26 @@
 <!--pages/book/book.wxml-->
-<text>pages/book/book.wxml</text>
+
+<view class='container'>
+
+  <view class='header'>
+    <view class='box'>
+      <image src='../images/book/search.png' />
+      <text>搜索书籍</text>
+    </view>
+  </view>
+
+
+  <view class='sub-container'>
+    <image class='head-img' src='../images/book/quality.png' />
+
+    <view class='books-container'>
+      <block wx:for="{{books}}" wx:for-item="book" wx:key="id">
+        <v-book book="{{book}}" />
+      </block>
+    </view>
+
+  </view>
+
+
+
+</view>

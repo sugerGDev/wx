@@ -8,37 +8,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    books:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // //promise 对象
-    // const promise = new Promise((resolve, reject) => {
-    //   // pending, fulfilled rejected
-    //   // 进行中，   已成功      已失败   
-    //   // 一旦调用，则凝固
-
-    //   wx.getSystemInfo({
-    //     success: res => resolve(res),
-    //     fail: err => reject(err)
-    //   })
-    // })
-
-    // //  获取 promise 结果
-    // promise.then(
-    //   res => console.log(res),
-    //   err => console.error(err)
-    // )
-
-
+    
     const promise = bookModel.getHotList()
-
     promise.then(
       res=> {
-        console.log(res)
+        this.setData({
+          books:res
+        })
       },
       err=>{
         console.error(err)

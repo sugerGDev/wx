@@ -95,8 +95,10 @@ class Http {
       errCode = 1
     }
 
+    const tip = tips[errCode]
+
     wx.showToast({
-      title: tips[errCode],
+      title: tip ? tip : tips[1],
       icon: 'none',
       duration: 2000,
     })
